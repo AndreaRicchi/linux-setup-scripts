@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="mate ~/.zshrc"
 alias update="sudo apt update && sudo apt upgrade"
-alias umount-all="sync && umount /media/{$USER}/*"
+alias umount-all="sync && umount /media/$USER/*"
 
 function mkcd {
 	command mkdir $1 && cd $1
