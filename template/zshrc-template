@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias update="sudo apt update && sudo apt upgrade"
+alias update="sudo apt update && sudo apt full-upgrade"
 alias umount-all="sync && umount /media/$USER/*"
 
 function mkcd {
