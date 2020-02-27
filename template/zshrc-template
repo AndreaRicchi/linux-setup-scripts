@@ -108,6 +108,10 @@ function mkcd {
 	command mkdir $1 && cd $1
 }
 
+function rmdir {
+	command rm -rf $1
+}
+
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
