@@ -17,6 +17,8 @@ sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 git config --global credential.helper store
 git config --global --add merge.tool kdiff3
 git config --global core.editor "vim"
+git config --global user.name ""
+git config --global user.email ""
 
 # User groups
 sudo adduser $USER dialout
