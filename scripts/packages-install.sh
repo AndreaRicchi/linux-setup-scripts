@@ -7,7 +7,7 @@ sudo apt full-upgrade
 # Packages
 sudo apt install -y build-essential git gcc gcc-multilib g++ g++-multilib gdb \
 	vim repo clang-format git-extras picocom libncurses5-dev libgl1-mesa-dev \
-	cppcheck tilix kdiff3-qt
+	cppcheck tilix kdiff3-qt shellcheck
 
 # Tilix config
 sudo update-alternatives --config x-terminal-emulator
