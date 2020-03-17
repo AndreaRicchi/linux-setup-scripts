@@ -112,6 +112,16 @@ function rmdir {
 	command rm -rf $1
 }
 
+function git-personal-config {
+        git config user.name "Andrea Ricchi"
+        git config user.email "aricchi95@gmail.com"
+}
+
+function git-work-config {
+        git config user.name "Andrea Ricchi"
+        git config user.email "ricchi@micro-systems.it"
+}
+
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
