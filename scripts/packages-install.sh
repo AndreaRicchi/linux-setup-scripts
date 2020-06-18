@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Deprecated script"
+exit 0
+
 # System update
 sudo apt update
 sudo apt full-upgrade
