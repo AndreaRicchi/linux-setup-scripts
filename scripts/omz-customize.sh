@@ -6,7 +6,7 @@ git clone https://github.com/dracula/zsh.git ~/Projects/dracula/zsh || (echo "Zs
 ln -s ~/Projects/dracula/zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme || (echo "Symbolic link creation failed" && exit 1)
 
 # syntax highlighting plugin
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting \
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \
     || (echo "Syntax highlighting plugin clone failed" && exit 1)
 
 # zshrc file
