@@ -23,3 +23,18 @@ My browser of choice is Brave, for security and speed; install it running:
 ### Tilix
 My terminal emulator of choice is Tilix, for the advance tiling feature. Combined with Tilix I use the [Tilix Dracula Theme](https://draculatheme.com/tilix); install it running:
 > `./scripts/tilix-dracula-install.sh`
+
+## Note
+The only reference to me are a couple of functions in the `./template/zshrc-template` file:
+```
+function git-personal-config {
+        git config user.name "Andrea Ricchi"
+        git config user.email "aricchi95@gmail.com"
+}
+
+function git-work-config {
+        git config user.name "Andrea Ricchi"
+        git config user.email "andrea.ricchi@amarulasolutions.com"
+}
+```
+Remember to remove them or update them accordingly.
