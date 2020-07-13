@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # install
-sudo apt install tilix || (echo "Tilix installation failed" && exit 1)
+sudo apt install tilix -y || (echo "Tilix installation failed" && exit 1)
 
 # tilix config
 sudo update-alternatives --config x-terminal-emulator || (echo "Tilix configuration failed" && exit 1)
