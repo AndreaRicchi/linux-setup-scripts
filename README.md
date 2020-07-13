@@ -10,19 +10,15 @@ Run from the repo root folder:
 2) `./scripts/omz-customize.sh`
 
 ### Qt
-To download the Linux installer and start the Qt Installation Tool run:
-> `./scripts/qt-install.sh`
+To download the Linux installer and start the Qt Installation Tool run: <br> `./scripts/qt-install.sh`
 
-Optionally install the [QtCreator Dracula Theme](https://draculatheme.com/qtcreator):
-> `./scripts/qt-dracula-install.sh`
+Optionally install the [QtCreator Dracula Theme](https://draculatheme.com/qtcreator): <br> `./scripts/qt-dracula-install.sh`
 
 ### Brave Browser
-My browser of choice is Brave, for security and speed; install it running:
-> `./scripts/brave-install.sh`
+My browser of choice is Brave, for security and speed; install it running: <br>`./scripts/brave-install.sh`
 
 ### Tilix
-My terminal emulator of choice is Tilix, for the advance tiling feature. Combined with Tilix I use the [Tilix Dracula Theme](https://draculatheme.com/tilix); install it running:
-> `./scripts/tilix-dracula-install.sh`
+My terminal emulator of choice is Tilix, for the advance tiling feature. Combined with Tilix I use the [Tilix Dracula Theme](https://draculatheme.com/tilix); install it running: <br> `./scripts/tilix-dracula-install.sh`
 
 ## Note
 The only reference to me are a couple of functions in the `./template/zshrc-template` file:
@@ -37,4 +33,4 @@ function git-work-config {
         git config user.email "andrea.ricchi@amarulasolutions.com"
 }
 ```
-Remember to remove them or update them accordingly.
+**Remember to remove them or update them accordingly.**
