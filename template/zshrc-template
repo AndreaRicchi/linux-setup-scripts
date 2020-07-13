@@ -109,6 +109,10 @@ function rmdir {
 	command rm -rf $1
 }
 
+function copy {
+	command pv $1 > $2
+}
+
 function git-personal-config {
         git config user.name "Andrea Ricchi"
         git config user.email "aricchi95@gmail.com"
