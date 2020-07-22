@@ -5,7 +5,7 @@ if [ "$EUID" -ne 0 ]
 	exit
 fi
 
-printf "Installing Tilix ..."
+printf "Installing Tilix... "
 apt install tilix -y >/dev/null 2>&1 || (echo "fail" && exit 1)
 echo "done"
 
