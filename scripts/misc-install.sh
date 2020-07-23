@@ -12,7 +12,7 @@ echo "done"
 
 # C++ tools
 printf "Installing C++ tools... "
-apt install gcc gcc-multilib g++ g++-multilib cppcheck clang-format \
+apt install gcc gcc-multilib g++ g++-multilib build-essential cppcheck clang-format \
 	gdb cmake -y >/dev/null 2>&1 || (echo "fail" && exit 1)
 echo "done"
 
