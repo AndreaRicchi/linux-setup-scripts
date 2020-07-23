@@ -22,19 +22,6 @@ apt install picocom git libgl1-mesa-dev fonts-firacode python pv tree \
 	iotop bmap-tools network-manager-openvpn -y >/dev/null 2>&1 || { echo "fail"; exit 1; }
 echo "done"
 
-# QEMU/KVM
-read -p "Install QEMU/KVM virtualization tools? [y/N]" -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-	printf "Installing QEMU/KVM... "
-	apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils \
-		libguestfs-tools genisoimage virtinst libosinfo-bin virt-manager -y >/dev/null 2>&1 || { echo "fail"; exit 1; }
-	adduser "$USER" libvirt >/dev/null 2>&1 || { echo "fail"; exit 1; }
-	adduser "$USER" libvirt-qemu >/dev/null 2>&1 || { echo "fail"; exit 1; }
-	echo "done"
-fi
-
 # General setup
 echo "Updating global configs... "
 
