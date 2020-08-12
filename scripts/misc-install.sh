@@ -10,12 +10,6 @@ printf "Installing vim... "
 apt install vim -y >/dev/null 2>&1 || { echo "fail"; exit 1; }
 echo "done"
 
-# C++ tools
-printf "Installing C++ tools... "
-apt install gcc gcc-multilib g++ g++-multilib build-essential cppcheck clang-format \
-	gdb cmake -y >/dev/null 2>&1 || { echo "fail"; exit 1; }
-echo "done"
-
 # Utils
 printf "Installing utility packages... "
 apt install picocom git libgl1-mesa-dev fonts-firacode python pv tree \
