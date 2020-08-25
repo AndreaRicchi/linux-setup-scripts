@@ -134,5 +134,5 @@ function git-work-config {
 }
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        [ -f /etc/resolv.conf ] && source /etc/profile.d/vte.sh
+        [ -f /etc/resolv.conf ] && [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
 fi
