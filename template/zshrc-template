@@ -101,6 +101,11 @@ source $ZSH/oh-my-zsh.sh
 alias update="sudo apt update && sudo apt full-upgrade"
 alias umount-all="sync && umount /media/$USER/*"
 
+if [ "$(command -v batcat)" ]; then
+        unalias -m 'cat'
+        alias cat='batcat -p'
+fi
+
 function mkcd {
 	command mkdir $1 && cd $1
 }

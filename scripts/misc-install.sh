@@ -13,7 +13,7 @@ echo "done"
 # Utils
 printf "Installing utility packages... "
 apt install picocom git libgl1-mesa-dev fonts-firacode python pv tree \
-	iotop bmap-tools network-manager-openvpn -y >/dev/null 2>&1 || { echo "fail"; exit 1; }
+	iotop bmap-tools network-manager-openvpn bat -y >/dev/null 2>&1 || { echo "fail"; exit 1; }
 echo "done"
 
 # General setup
