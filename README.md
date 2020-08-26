@@ -34,6 +34,12 @@ My terminal emulator of choice is Tilix, for the advance tiling feature. Combine
 ./scripts/tilix-dracula-install.sh
 ```
 
+### Docker
+Docker is a mandatory tool for software developers. I mainly use it to build custom OS without touching my host machine. Install Docker by running:
+```shell
+./scripts/docker-install.sh
+```
+
 ## Note
 The only reference to me are a couple of functions in the `./template/zshrc-template` file:
 ```
