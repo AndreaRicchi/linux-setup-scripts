@@ -6,19 +6,33 @@ Set of scripts used to initialize my Linux machine
 ### Oh My Zsh
 Unfortunately the Oh My Zsh installation must be done in two steps because when installing it the shell gets changed stopping the currently executed script.
 Run from the repo root folder:
-1) `./scripts/omz-install.sh`
-2) `./scripts/omz-customize.sh`
+```shell
+./scripts/omz-install.sh
+./scripts/omz-customize.sh
+```
 
 ### Qt
-To download the Linux installer and start the Qt Installation Tool run: <br> `./scripts/qt-install.sh`
+To download the Linux installer and start the Qt Installation Tool run:
+```shell
+./scripts/tilix-dracula-install.sh
+```
 
-Optionally install the [QtCreator Dracula Theme](https://draculatheme.com/qtcreator): <br> `./scripts/qt-dracula-install.sh`
+Optionally install the [QtCreator Dracula Theme](https://draculatheme.com/qtcreator):
+```shell
+./scripts/tilix-dracula-install.sh
+```
 
 ### Brave Browser
-My browser of choice is Brave, for security and speed; install it running: <br>`./scripts/brave-install.sh`
+My browser of choice is Brave, for security and speed; install it running:
+```shell
+./scripts/tilix-dracula-install.sh
+```
 
 ### Tilix
-My terminal emulator of choice is Tilix, for the advance tiling feature. Combined with Tilix I use the [Tilix Dracula Theme](https://draculatheme.com/tilix); install it running: <br> `./scripts/tilix-dracula-install.sh`
+My terminal emulator of choice is Tilix, for the advance tiling feature. Combined with Tilix I use the [Tilix Dracula Theme](https://draculatheme.com/tilix); install it running: 
+```shell
+./scripts/tilix-dracula-install.sh
+```
 
 ## Note
 The only reference to me are a couple of functions in the `./template/zshrc-template` file:
