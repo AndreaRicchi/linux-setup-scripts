@@ -34,6 +34,12 @@ My terminal emulator of choice is Tilix, for the advance tiling feature. Combine
 ./scripts/tilix-dracula-install.sh
 ```
 
+### Qemu/KVM
+To run some virtual environment Qemu combined with KVM is a good alternative to VirtualBox. To install it run:
+```shell
+./scripts/qemu-kvm-install.sh
+```
+
 ### Docker
 Docker is a mandatory tool for software developers. I mainly use it to build custom OS without touching my host machine. Install Docker by running:
 ```shell
