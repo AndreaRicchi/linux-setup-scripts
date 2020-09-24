@@ -24,10 +24,6 @@ install_starship_prompt()
         cp "${ZSHRC_TEMPLATE}" ~/.zshrc
 }
 
-# syntax highlighting plugin
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting \
-	|| (echo "Syntax highlighting plugin clone failed" && exit 1)
-
 PS3='Please enter your choice: '
 options=("Dracula Theme" "Starship Prompt")
 select opt in "${options[@]}"
@@ -44,3 +40,6 @@ do
         *) echo "invalid option $REPLY";;
     esac
 done
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \
+	|| (echo "Syntax highlighting plugin clone failed" && exit 1)
