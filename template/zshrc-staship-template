@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias update="sudo apt update && sudo apt full-upgrade"
 alias umount-all="sync && umount /media/$USER/*"
+alias untar="tar -xf"
 
 if [ "$(command -v batcat)" ]; then
         unalias -m 'cat'
