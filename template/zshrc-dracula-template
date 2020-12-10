@@ -107,9 +107,9 @@ if [ "$(command -v batcat)" ]; then
         alias cat='batcat -p'
 fi
 
-if [ "$(command -v ytop)" ]; then
+if [ "$(command -v btm)" ]; then
         unalias -m 'top'
-        alias top='ytop'
+        alias top='btm'
 fi
 
 function mkcd {

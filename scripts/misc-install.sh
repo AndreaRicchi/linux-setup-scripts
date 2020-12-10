@@ -15,10 +15,10 @@ printf "Installing utility packages... "
 apt install picocom git libgl1-mesa-dev fonts-firacode python pv tree \
 	iotop bmap-tools network-manager-openvpn bat -y >/dev/null 2>&1 || { echo "fail"; exit 1; }
 
-YTOP_PACKAGE=/tmp/ytop-package.tar.gz
-wget -O $YTOP_PACKAGE https://github.com/cjbassi/ytop/releases/download/0.6.2/ytop-0.6.2-x86_64-unknown-linux-gnu.tar.gz
-tar -xvf $YTOP_PACKAGE
-cp ytop /urs/local/bin/
+BOTTOM_PKG=/tmp/bottom_amd64.deb
+wget -O $BOTTOM_PKG https://github.com/ClementTsang/bottom/releases/download/0.5.3/bottom_0.5.3_amd64.deb
+dpkg -i $BOTTOM_PKG
+rm $BOTTOM_PKG
 echo "done"
 
 # General setup
