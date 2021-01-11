@@ -101,6 +101,19 @@ docker_install() {
 	sudo $DOCKERSCRIPTPATH
 }
 
+cpp_tools_install() {
+	sudo apt update
+	echo
+	sudo apt install -y \
+		gcc gcc-multilib g++ g++-multilib gdb build-essential \
+		cppcheck clang-format cmake picocom libgl1-mesa-dev vim \
+		bmap-tools
+	echo
+	adduser "$USER" dialout
+	echo
+	git config --global core.editor "vim"
+}
+
 main () {
 	setup_color
 
@@ -162,6 +175,14 @@ main () {
 	read opt
 	case $opt in
 		y*|Y*|"") docker_install ;;
+		*) ;;
+	esac
+
+	clear
+	printf "${YELLOW}Install C++ SDK tools? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") cpp_tools_install ;;
 		*) ;;
 	esac
 }
