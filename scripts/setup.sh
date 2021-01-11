@@ -43,6 +43,14 @@ brave_browser_install() {
 	sudo apt install -y brave-browser
 }
 
+tilix_terminal_install() {
+	sudo apt install -y tilix
+	echo
+	ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+	echo
+	update-alternatives --config x-terminal-emulator
+}
+
 # main
 
 if [ "$EUID" -ne 0 ]
@@ -53,7 +61,6 @@ fi
 setup_color
 
 clear
-
 printf "${YELLOW}Install MesloLGS NF font pack? [Y/n]${RESET} "
 read opt
 case $opt in
@@ -62,10 +69,17 @@ case $opt in
 esac
 
 clear
-
 printf "${YELLOW}Install Brave browser? [Y/n]${RESET} "
 read opt
 case $opt in
 	y*|Y*|"") brave_browser_install ;;
+	*) ;;
+esac
+
+clear
+printf "${YELLOW}Install Tilix terminal? [Y/n]${RESET} "
+read opt
+case $opt in
+	y*|Y*|"") tilix_terminal_install ;;
 	*) ;;
 esac
