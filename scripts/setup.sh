@@ -4,8 +4,13 @@ set -e
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
+
 RESOURCESPATH=$SCRIPTPATH/../resources
-SYSTEMFONTSPATH=$HOME/.local/share/fonts/
+SYSTEMFONTSPATH=$HOME/.local/share/fonts
+
+QTINSTALLERPATH=/tmp/qt-unified-linux-x64-online.run
+QTCREATORTHEMESPATH=$HOME/.config/QtProject/qtcreator/styles
+QTCREATORDRACULATHEMEPATH=$QTCREATORTHEMEPATH/dracula.xml
 
 setup_color() {
 	# Only use colors if connected to a terminal
@@ -51,6 +56,18 @@ tilix_terminal_install() {
 	update-alternatives --config x-terminal-emulator
 }
 
+qt_install() {
+	wget -O $QTINSTALLERPATH http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
+	echo
+	chmod +x $QTINSTALLERPATH
+	echo
+	$QTINSTALLERPATH
+	echo
+	mkdir -p $QTCREATORTHEMESPATH
+	echo
+	wget -O $QTCREATORDRACULATHEMEPATH https://github.com/dracula/qtcreator/blob/master/dracula.xml
+}
+
 # main
 
 if [ "$EUID" -ne 0 ]
@@ -81,5 +98,13 @@ printf "${YELLOW}Install Tilix terminal? [Y/n]${RESET} "
 read opt
 case $opt in
 	y*|Y*|"") tilix_terminal_install ;;
+	*) ;;
+esac
+
+clear
+printf "${YELLOW}Install Qt framework? [Y/n]${RESET} "
+read opt
+case $opt in
+	y*|Y*|"") qt_install ;;
 	*) ;;
 esac
