@@ -12,6 +12,8 @@ QTINSTALLERPATH=/tmp/qt-unified-linux-x64-online.run
 QTCREATORTHEMESPATH=$HOME/.config/QtProject/qtcreator/styles
 QTCREATORDRACULATHEMEPATH=$QTCREATORTHEMEPATH/dracula.xml
 
+DOCKERSCRIPTPATH=/tmp/get-docker.sh
+
 setup_color() {
 	# Only use colors if connected to a terminal
 	if [ -t 1 ]; then
@@ -68,6 +70,12 @@ qt_install() {
 	wget -O $QTCREATORDRACULATHEMEPATH https://github.com/dracula/qtcreator/blob/master/dracula.xml
 }
 
+docker_install() {
+	curl -fsSL https://get.docker.com -o $DOCKERSCRIPTPATH
+	echo
+	sudo $DOCKERSCRIPTPATH
+}
+
 # main
 
 if [ "$EUID" -ne 0 ]
@@ -106,5 +114,13 @@ printf "${YELLOW}Install Qt framework? [Y/n]${RESET} "
 read opt
 case $opt in
 	y*|Y*|"") qt_install ;;
+	*) ;;
+esac
+
+clear
+printf "${YELLOW}Install Docker? [Y/n]${RESET} "
+read opt
+case $opt in
+	y*|Y*|"") docker_install ;;
 	*) ;;
 esac
