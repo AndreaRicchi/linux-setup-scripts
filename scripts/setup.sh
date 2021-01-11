@@ -101,67 +101,69 @@ docker_install() {
 	sudo $DOCKERSCRIPTPATH
 }
 
-# main
+main () {
+	setup_color
 
-setup_color
+	clear
+	if ! which zsh >/dev/null 2>&1; then
+		printf "${YELLOW}Install Oh My Zsh? [Y/n]${RESET} "
+		read opt
+		case $opt in
+			y*|Y*|"") zsh_install ;;
+			*) ;;
+		esac
+		exit 0
+	fi
 
-clear
-if ! which zsh >/dev/null 2>&1; then
-	printf "${YELLOW}Install Oh My Zsh? [Y/n]${RESET} "
+	clear
+	if which zsh >/dev/null 2>&1; then
+		printf "${YELLOW}Install Oh My Zsh theme and plugins? [Y/n]${RESET} "
+		read opt
+		case $opt in
+			y*|Y*|"") zsh_theme_plugins_install ;;
+			*) ;;
+		esac
+	fi
+
+	clear
+	printf "${YELLOW}Install MesloLGS NF font pack? [Y/n]${RESET} "
 	read opt
 	case $opt in
-		y*|Y*|"") zsh_install ;;
+		y*|Y*|"") meslolgs_font_install ;;
 		*) ;;
 	esac
-	exit 0
-fi
 
-clear
-if which zsh >/dev/null 2>&1; then
-	printf "${YELLOW}Install Oh My Zsh theme and plugins? [Y/n]${RESET} "
+	clear
+	printf "${YELLOW}Install Brave browser? [Y/n]${RESET} "
 	read opt
 	case $opt in
-		y*|Y*|"") zsh_theme_plugins_install ;;
+		y*|Y*|"") brave_browser_install ;;
 		*) ;;
 	esac
-fi
 
-clear
-printf "${YELLOW}Install MesloLGS NF font pack? [Y/n]${RESET} "
-read opt
-case $opt in
-	y*|Y*|"") meslolgs_font_install ;;
-	*) ;;
-esac
+	clear
+	printf "${YELLOW}Install Tilix terminal? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") tilix_terminal_install ;;
+		*) ;;
+	esac
 
-clear
-printf "${YELLOW}Install Brave browser? [Y/n]${RESET} "
-read opt
-case $opt in
-	y*|Y*|"") brave_browser_install ;;
-	*) ;;
-esac
+	clear
+	printf "${YELLOW}Install Qt framework? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") qt_install ;;
+		*) ;;
+	esac
 
-clear
-printf "${YELLOW}Install Tilix terminal? [Y/n]${RESET} "
-read opt
-case $opt in
-	y*|Y*|"") tilix_terminal_install ;;
-	*) ;;
-esac
+	clear
+	printf "${YELLOW}Install Docker? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") docker_install ;;
+		*) ;;
+	esac
+}
 
-clear
-printf "${YELLOW}Install Qt framework? [Y/n]${RESET} "
-read opt
-case $opt in
-	y*|Y*|"") qt_install ;;
-	*) ;;
-esac
-
-clear
-printf "${YELLOW}Install Docker? [Y/n]${RESET} "
-read opt
-case $opt in
-	y*|Y*|"") docker_install ;;
-	*) ;;
-esac
+main
