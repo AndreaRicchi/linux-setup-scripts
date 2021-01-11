@@ -33,6 +33,14 @@ setup_color() {
 	fi
 }
 
+zsh_install() {
+	sudo apt update
+	echo
+	sudo apt install -y zsh git curl git-extras
+	echo
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
 meslolgs_font_install() {
 	sudo cp "$RESOURCESPATH"/*.ttf "$SYSTEMFONTSPATH"
 }
@@ -84,6 +92,17 @@ if [ "$EUID" -ne 0 ]
 fi
 
 setup_color
+
+clear
+if ! which zsh >/dev/null 2>&1; then
+	printf "${YELLOW}Install Oh My Zsh? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") zsh_install ;;
+		*) ;;
+	esac
+	exit 0
+fi
 
 clear
 printf "${YELLOW}Install MesloLGS NF font pack? [Y/n]${RESET} "
