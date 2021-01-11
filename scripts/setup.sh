@@ -6,6 +6,11 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 
 RESOURCESPATH=$SCRIPTPATH/../resources
+
+TEMPLATESPATH=$SCRIPTPATH/../templates
+
+ZSHRCTEMPLATEPATH=$TEMPLATESPATH/zshrc-template
+
 SYSTEMFONTSPATH=$HOME/.local/share/fonts
 
 QTINSTALLERPATH=/tmp/qt-unified-linux-x64-online.run
@@ -36,9 +41,21 @@ setup_color() {
 zsh_install() {
 	sudo apt update
 	echo
-	sudo apt install -y zsh git curl git-extras
+	sudo apt install -y zsh git curl
 	echo
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+zsh_theme_plugins_install() {
+	cp $ZSHRCTEMPLATEPATH $HOME/.zshrc
+	echo
+	sudo apt update
+	echo
+	sudo apt install -y git-extras
+	echo
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	echo
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 }
 
 meslolgs_font_install() {
@@ -86,11 +103,6 @@ docker_install() {
 
 # main
 
-if [ "$EUID" -ne 0 ]
-	then echo "Please run as root"
-	exit
-fi
-
 setup_color
 
 clear
@@ -102,6 +114,16 @@ if ! which zsh >/dev/null 2>&1; then
 		*) ;;
 	esac
 	exit 0
+fi
+
+clear
+if which zsh >/dev/null 2>&1; then
+	printf "${YELLOW}Install Oh My Zsh theme and plugins? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") zsh_theme_plugins_install ;;
+		*) ;;
+	esac
 fi
 
 clear
