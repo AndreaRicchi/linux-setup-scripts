@@ -21,6 +21,8 @@ DOCKERSCRIPTPATH=/tmp/get-docker.sh
 
 BTMINSTALLERPATH=/tmp/bottom_amd64.deb
 
+BATCATINSTALLERPATH=/tmp/batcat_amd64.deb
+
 setup_color() {
 	# Only use colors if connected to a terminal
 	if [ -t 1 ]; then
@@ -121,6 +123,11 @@ btm_tool_install() {
 	sudo dpkg -i $BTMINSTALLERPATH
 }
 
+batcat_tool_install() {
+	curl -L https://github.com/sharkdp/bat/releases/download/v0.17.1/bat_0.17.1_amd64.deb -o $BATCATINSTALLERPATH
+	sudo dpkg -i $BATCATINSTALLERPATH
+}
+
 main () {
 	setup_color
 
@@ -198,6 +205,14 @@ main () {
 	read opt
 	case $opt in
 		y*|Y*|"") btm_tool_install ;;
+		*) ;;
+	esac
+
+	clear
+	printf "${YELLOW}Install batcat (cat replacement) tool? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") batcat_tool_install ;;
 		*) ;;
 	esac
 }
