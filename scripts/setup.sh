@@ -19,6 +19,8 @@ QTCREATORDRACULATHEMEPATH=$QTCREATORTHEMEPATH/dracula.xml
 
 DOCKERSCRIPTPATH=/tmp/get-docker.sh
 
+BTMINSTALLERPATH=/tmp/bottom_amd64.deb
+
 setup_color() {
 	# Only use colors if connected to a terminal
 	if [ -t 1 ]; then
@@ -114,6 +116,11 @@ cpp_tools_install() {
 	git config --global core.editor "vim"
 }
 
+btm_tool_install() {
+	curl -L https://github.com/ClementTsang/bottom/releases/download/0.5.7/bottom_0.5.7_amd64.deb -o $BTMINSTALLERPATH
+	sudo dpkg -i $BTMINSTALLERPATH
+}
+
 main () {
 	setup_color
 
@@ -183,6 +190,14 @@ main () {
 	read opt
 	case $opt in
 		y*|Y*|"") cpp_tools_install ;;
+		*) ;;
+	esac
+
+	clear
+	printf "${YELLOW}Install bottom (top replacement) tool? [Y/n]${RESET} "
+	read opt
+	case $opt in
+		y*|Y*|"") btm_tool_install ;;
 		*) ;;
 	esac
 }

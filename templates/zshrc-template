@@ -109,6 +109,11 @@ if [ "$(command -v batcat)" ]; then
         alias cat='batcat -p'
 fi
 
+if [ "$(command -v btm)" ]; then
+        unalias -m 'top'
+        alias top='btm'
+fi
+
 function mkcd {
 	command mkdir $1 && cd $1
 }
