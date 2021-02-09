@@ -111,7 +111,7 @@ cpp_tools_install() {
 	sudo apt install -y \
 		gcc gcc-multilib g++ g++-multilib gdb build-essential \
 		cppcheck clang-format cmake picocom libgl1-mesa-dev vim \
-		bmap-tools sshpass
+		bmap-tools sshpass tree
 	echo
 	adduser "$USER" dialout
 	echo
