@@ -124,7 +124,7 @@ btm_tool_install() {
 }
 
 batcat_tool_install() {
-	curl -L https://github.com/sharkdp/bat/releases/download/v0.17.1/bat_0.17.1_amd64.deb -o $BATCATINSTALLERPATH
+	curl -L https://github.com/sharkdp/bat/releases/download/v0.18.0/bat_0.18.0_amd64.deb -o $BATCATINSTALLERPATH
 	sudo dpkg -i $BATCATINSTALLERPATH
 }
 
