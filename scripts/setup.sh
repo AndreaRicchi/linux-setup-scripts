@@ -15,7 +15,7 @@ SYSTEMFONTSPATH=$HOME/.local/share/fonts
 
 QTINSTALLERPATH=/tmp/qt-unified-linux-x64-online.run
 QTCREATORTHEMESPATH=$HOME/.config/QtProject/qtcreator/styles
-QTCREATORDRACULATHEMEPATH=$QTCREATORTHEMEPATH/dracula.xml
+QTCREATORDRACULATHEMEPATH=$QTCREATORTHEMESPATH/dracula.xml
 
 DOCKERSCRIPTPATH=/tmp/get-docker.sh
 
@@ -51,15 +51,15 @@ zsh_install() {
 }
 
 zsh_theme_plugins_install() {
-	cp $ZSHRCTEMPLATEPATH $HOME/.zshrc
+	cp "$ZSHRCTEMPLATEPATH" "$HOME"/.zshrc
 	echo
 	sudo apt update
 	echo
 	sudo apt install -y git-extras
 	echo
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
 	echo
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
 }
 
 meslolgs_font_install() {
@@ -69,11 +69,9 @@ meslolgs_font_install() {
 brave_browser_install() {
 	sudo apt install apt-transport-https curl gnupg
 	echo
-	curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | \
-		sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+	curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
 	echo
-	echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | \
-		sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+	echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 	sudo apt update
 	echo
 	sudo apt install -y brave-browser
@@ -88,21 +86,21 @@ tilix_terminal_install() {
 }
 
 qt_install() {
-	wget -O $QTINSTALLERPATH http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
+	wget -O "$QTINSTALLERPATH" http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
 	echo
-	chmod +x $QTINSTALLERPATH
+	chmod +x "$QTINSTALLERPATH"
 	echo
-	$QTINSTALLERPATH
+	"$QTINSTALLERPATH"
 	echo
-	mkdir -p $QTCREATORTHEMESPATH
+	mkdir -p "$QTCREATORTHEMESPATH"
 	echo
-	wget -O $QTCREATORDRACULATHEMEPATH https://github.com/dracula/qtcreator/blob/master/dracula.xml
+	wget -O "$QTCREATORDRACULATHEMEPATH" https://github.com/dracula/qtcreator/blob/master/dracula.xml
 }
 
 docker_install() {
-	curl -fsSL https://get.docker.com -o $DOCKERSCRIPTPATH
+	curl -fsSL https://get.docker.com -o "$DOCKERSCRIPTPATH"
 	echo
-	sudo $DOCKERSCRIPTPATH
+	sudo "$DOCKERSCRIPTPATH"
 }
 
 cpp_tools_install() {
@@ -119,101 +117,101 @@ cpp_tools_install() {
 }
 
 btm_tool_install() {
-	curl -L https://github.com/ClementTsang/bottom/releases/download/0.5.7/bottom_0.5.7_amd64.deb -o $BTMINSTALLERPATH
-	sudo dpkg -i $BTMINSTALLERPATH
+	curl -L https://github.com/ClementTsang/bottom/releases/download/0.5.7/bottom_0.5.7_amd64.deb -o "$BTMINSTALLERPATH"
+	sudo dpkg -i "$BTMINSTALLERPATH"
 }
 
 batcat_tool_install() {
-	curl -L https://github.com/sharkdp/bat/releases/download/v0.18.0/bat_0.18.0_amd64.deb -o $BATCATINSTALLERPATH
-	sudo dpkg -i $BATCATINSTALLERPATH
+	curl -L https://github.com/sharkdp/bat/releases/download/v0.18.0/bat_0.18.0_amd64.deb -o "$BATCATINSTALLERPATH"
+	sudo dpkg -i "$BATCATINSTALLERPATH"
 }
 
-main () {
+main() {
 	setup_color
 
 	clear
 	if ! which zsh >/dev/null 2>&1; then
-		printf "${YELLOW}Install Oh My Zsh? [Y/n]${RESET} "
-		read opt
+		printf "%sInstall Oh My Zsh? [Y/n]%s " "${YELLOW}" "${RESET}"
+		read -r opt
 		case $opt in
-			y*|Y*|"") zsh_install ;;
-			*) ;;
+		y* | Y* | "") zsh_install ;;
+		*) ;;
 		esac
 		exit 0
 	fi
 
 	clear
 	if which zsh >/dev/null 2>&1; then
-		printf "${YELLOW}Install Oh My Zsh theme and plugins? [Y/n]${RESET} "
-		read opt
+		printf "%sInstall Oh My Zsh theme and plugins? [Y/n]%s " "${YELLOW}" "${RESET}"
+		read -r opt
 		case $opt in
-			y*|Y*|"") zsh_theme_plugins_install ;;
-			*) ;;
+		y* | Y* | "") zsh_theme_plugins_install ;;
+		*) ;;
 		esac
 	fi
 
 	clear
-	printf "${YELLOW}Install MesloLGS NF font pack? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall MesloLGS NF font pack? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") meslolgs_font_install ;;
-		*) ;;
+	y* | Y* | "") meslolgs_font_install ;;
+	*) ;;
 	esac
 
 	clear
-	printf "${YELLOW}Install Brave browser? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall Brave browser? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") brave_browser_install ;;
-		*) ;;
+	y* | Y* | "") brave_browser_install ;;
+	*) ;;
 	esac
 
 	clear
-	printf "${YELLOW}Install Tilix terminal? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall Tilix terminal? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") tilix_terminal_install ;;
-		*) ;;
+	y* | Y* | "") tilix_terminal_install ;;
+	*) ;;
 	esac
 
 	clear
-	printf "${YELLOW}Install Qt framework? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall Qt framework? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") qt_install ;;
-		*) ;;
+	y* | Y* | "") qt_install ;;
+	*) ;;
 	esac
 
 	clear
-	printf "${YELLOW}Install Docker? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall Docker? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") docker_install ;;
-		*) ;;
+	y* | Y* | "") docker_install ;;
+	*) ;;
 	esac
 
 	clear
-	printf "${YELLOW}Install C++ SDK tools? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall C++ SDK tools? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") cpp_tools_install ;;
-		*) ;;
+	y* | Y* | "") cpp_tools_install ;;
+	*) ;;
 	esac
 
 	clear
-	printf "${YELLOW}Install bottom (top replacement) tool? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall bottom (top replacement) tool? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") btm_tool_install ;;
-		*) ;;
+	y* | Y* | "") btm_tool_install ;;
+	*) ;;
 	esac
 
 	clear
-	printf "${YELLOW}Install batcat (cat replacement) tool? [Y/n]${RESET} "
-	read opt
+	printf "%sInstall batcat (cat replacement) tool? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
 	case $opt in
-		y*|Y*|"") batcat_tool_install ;;
-		*) ;;
+	y* | Y* | "") batcat_tool_install ;;
+	*) ;;
 	esac
 }
 
