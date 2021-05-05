@@ -126,6 +126,10 @@ batcat_tool_install() {
 	sudo dpkg -i "$BATCATINSTALLERPATH"
 }
 
+python_nautilus_install() {
+	wget -qO- https://raw.githubusercontent.com/cra0zy/code-nautilus/master/install.sh | bash
+}
+
 main() {
 	setup_color
 
@@ -211,6 +215,14 @@ main() {
 	read -r opt
 	case $opt in
 	y* | Y* | "") batcat_tool_install ;;
+	*) ;;
+	esac
+
+	clear
+	printf "%sInstall python_nautilus (Nautilus VSCode shortcut) extension? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
+	case $opt in
+	y* | Y* | "") python_nautilus_install ;;
 	*) ;;
 	esac
 }
