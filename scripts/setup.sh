@@ -5,24 +5,6 @@ set -e
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 
-RESOURCESPATH=$SCRIPTPATH/../resources
-
-TEMPLATESPATH=$SCRIPTPATH/../templates
-
-ZSHRCTEMPLATEPATH=$TEMPLATESPATH/zshrc-template
-
-SYSTEMFONTSPATH=$HOME/.local/share/fonts
-
-QTINSTALLERPATH=/tmp/qt-unified-linux-x64-online.run
-QTCREATORTHEMESPATH=$HOME/.config/QtProject/qtcreator/styles
-QTCREATORDRACULATHEMEPATH=$QTCREATORTHEMESPATH/dracula.xml
-
-DOCKERSCRIPTPATH=/tmp/get-docker.sh
-
-BTMINSTALLERPATH=/tmp/bottom_amd64.deb
-
-BATCATINSTALLERPATH=/tmp/batcat_amd64.deb
-
 setup_color() {
 	# Only use colors if connected to a terminal
 	if [ -t 1 ]; then
@@ -50,6 +32,9 @@ zsh_install() {
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
+TEMPLATESPATH=$SCRIPTPATH/../templates
+ZSHRCTEMPLATEPATH=$TEMPLATESPATH/zshrc-template
+
 zsh_theme_plugins_install() {
 	cp "$ZSHRCTEMPLATEPATH" "$HOME"/.zshrc
 	echo
@@ -61,6 +46,9 @@ zsh_theme_plugins_install() {
 	echo
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
 }
+
+RESOURCESPATH=$SCRIPTPATH/../resources
+SYSTEMFONTSPATH=$HOME/.local/share/fonts
 
 meslolgs_font_install() {
 	sudo cp "$RESOURCESPATH"/*.ttf "$SYSTEMFONTSPATH"
@@ -91,6 +79,10 @@ tilix_terminal_install() {
 	wget -O "$TILIX_THEMES_FOLDER" https://github.com/dracula/tilix/blob/master/Dracula.json
 }
 
+QTINSTALLERPATH=/tmp/qt-unified-linux-x64-online.run
+QTCREATORTHEMESPATH=$HOME/.config/QtProject/qtcreator/styles
+QTCREATORDRACULATHEMEPATH=$QTCREATORTHEMESPATH/dracula.xml
+
 qt_install() {
 	wget -O "$QTINSTALLERPATH" http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
 	echo
@@ -102,6 +94,8 @@ qt_install() {
 	echo
 	wget -O "$QTCREATORDRACULATHEMEPATH" https://github.com/dracula/qtcreator/blob/master/dracula.xml
 }
+
+DOCKERSCRIPTPATH=/tmp/get-docker.sh
 
 docker_install() {
 	curl -fsSL https://get.docker.com -o "$DOCKERSCRIPTPATH"
@@ -122,10 +116,14 @@ cpp_tools_install() {
 	git config --global core.editor "vim"
 }
 
+BTMINSTALLERPATH=/tmp/bottom_amd64.deb
+
 btm_tool_install() {
 	curl -L https://github.com/ClementTsang/bottom/releases/download/0.5.7/bottom_0.5.7_amd64.deb -o "$BTMINSTALLERPATH"
 	sudo dpkg -i "$BTMINSTALLERPATH"
 }
+
+BATCATINSTALLERPATH=/tmp/batcat_amd64.deb
 
 batcat_tool_install() {
 	curl -L https://github.com/sharkdp/bat/releases/download/v0.18.0/bat_0.18.0_amd64.deb -o "$BATCATINSTALLERPATH"
