@@ -77,12 +77,18 @@ brave_browser_install() {
 	sudo apt install -y brave-browser
 }
 
+TILIX_THEMES_FOLDER=$HOME/.config/tilix/schemes
+
 tilix_terminal_install() {
 	sudo apt install -y tilix
 	echo
 	ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 	echo
 	update-alternatives --config x-terminal-emulator
+	echo
+	mkdir -p "$TILIX_THEMES_FOLDER"
+	echo
+	wget -O "$TILIX_THEMES_FOLDER" https://github.com/dracula/tilix/blob/master/Dracula.json
 }
 
 qt_install() {
