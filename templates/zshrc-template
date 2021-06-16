@@ -103,6 +103,7 @@ alias update="sudo apt update && sudo apt full-upgrade"
 alias umount-all="sync && umount /media/$USER/*"
 alias untar="tar -xf"
 alias setclip="xclip -selection c"
+alias gpa="git remote | xargs -L1 git push --all"
 
 if [ "$(command -v batcat)" ]; then
         unalias -m 'cat'
