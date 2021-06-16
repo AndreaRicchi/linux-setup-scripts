@@ -115,6 +115,10 @@ if [ "$(command -v btm)" ]; then
         alias top='btm'
 fi
 
+function touch_class {
+	command touch $1.hpp && touch $1.cpp
+}
+
 function mkcd {
 	command mkdir $1 && cd $1
 }
