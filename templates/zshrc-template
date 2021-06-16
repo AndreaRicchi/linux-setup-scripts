@@ -106,13 +106,13 @@ alias setclip="xclip -selection c"
 alias gpa="git remote | xargs -L1 git push --all"
 
 if [ "$(command -v batcat)" ]; then
-        unalias -m 'cat'
-        alias cat='batcat -p'
+	unalias -m 'cat'
+	alias cat='batcat -p'
 fi
 
 if [ "$(command -v btm)" ]; then
-        unalias -m 'top'
-        alias top='btm'
+	unalias -m 'top'
+	alias top='btm'
 fi
 
 function touch_class {
@@ -128,16 +128,16 @@ function rmdir {
 }
 
 function git-personal-config {
-        git config user.name "Andrea Ricchi"
-        git config user.email "aricchi95@gmail.com"
+	git config user.name "Andrea Ricchi"
+	git config user.email "aricchi95@gmail.com"
 }
 
 function git-work-config {
-        git config user.name "Andrea Ricchi"
-        git config user.email "andrea.ricchi@amarulasolutions.com"
+	git config user.name "Andrea Ricchi"
+	git config user.email "andrea.ricchi@amarulasolutions.com"
 }
 
 # Tilix VTE Config
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        [ -f /etc/resolv.conf ] && [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
+	[ -f /etc/resolv.conf ] && [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
 fi
