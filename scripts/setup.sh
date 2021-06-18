@@ -51,6 +51,7 @@ RESOURCESPATH=$SCRIPTPATH/../resources
 SYSTEMFONTSPATH=$HOME/.local/share/fonts
 
 meslolgs_font_install() {
+	mkdir -p "$SYSTEMFONTSPATH"
 	sudo cp "$RESOURCESPATH"/*.ttf "$SYSTEMFONTSPATH"
 }
 
