@@ -71,7 +71,7 @@ TILIX_THEMES_FOLDER=$HOME/.config/tilix/schemes
 tilix_terminal_install() {
 	sudo apt install -y tilix
 	echo
-	ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 	echo
 	update-alternatives --config x-terminal-emulator
 	echo
@@ -112,7 +112,7 @@ cpp_tools_install() {
 		cppcheck clang-format cmake picocom libgl1-mesa-dev vim \
 		bmap-tools sshpass tree git-extras
 	echo
-	adduser "$USER" dialout
+	sudo adduser "$USER" dialout
 	echo
 	git config --global core.editor "vim"
 }
