@@ -77,7 +77,7 @@ tilix_terminal_install() {
 	echo
 	mkdir -p "$TILIX_THEMES_FOLDER"
 	echo
-	wget -O "$TILIX_THEMES_FOLDER" https://github.com/dracula/tilix/blob/master/Dracula.json
+	wget -O "$TILIX_THEMES_FOLDER" https://raw.githubusercontent.com/dracula/tilix/master/Dracula.json
 }
 
 QTINSTALLERPATH=/tmp/qt-unified-linux-x64-online.run
@@ -93,7 +93,7 @@ qt_install() {
 	echo
 	mkdir -p "$QTCREATORTHEMESPATH"
 	echo
-	wget -O "$QTCREATORDRACULATHEMEPATH" https://github.com/dracula/qtcreator/blob/master/dracula.xml
+	wget -O "$QTCREATORDRACULATHEMEPATH" https://raw.githubusercontent.com/dracula/qtcreator/master/dracula.xml
 }
 
 DOCKERSCRIPTPATH=/tmp/get-docker.sh
