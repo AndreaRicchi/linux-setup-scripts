@@ -52,7 +52,12 @@ SYSTEMFONTSPATH=$HOME/.local/share/fonts
 
 meslolgs_font_install() {
 	mkdir -p "$SYSTEMFONTSPATH"
-	sudo cp "$RESOURCESPATH"/*.ttf "$SYSTEMFONTSPATH"
+	sudo cp "$RESOURCESPATH"/MesloLGS/*.ttf "$SYSTEMFONTSPATH"
+}
+
+roboto_font_install() {
+	mkdir -p "$SYSTEMFONTSPATH"
+	sudo cp "$RESOURCESPATH"/Roboto/*.ttf "$SYSTEMFONTSPATH"
 }
 
 brave_browser_install() {
@@ -164,6 +169,14 @@ main() {
 	read -r opt
 	case $opt in
 	y* | Y* | "") meslolgs_font_install ;;
+	*) ;;
+	esac
+
+	clear
+	printf "%sInstall Roboto font pack? [Y/n]%s " "${YELLOW}" "${RESET}"
+	read -r opt
+	case $opt in
+	y* | Y* | "") roboto_font_install ;;
 	*) ;;
 	esac
 
